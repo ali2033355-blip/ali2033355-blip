@@ -1,0 +1,92 @@
+backend:
+  name: github
+  repo: vireonis/vireonis.github.io
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://vireonis.github.io
+display_url: https://vireonis.github.io
+
+collections:
+
+  - name: "articles"
+    label: "Articles"
+    label_singular: "Article"
+    folder: "content/articles"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+
+    fields:
+
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - Reviews
+          - Buying Guides
+          - Comparisons
+          - News
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Article"
+        name: "body"
+        widget: "markdown"
+
+
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+
+    fields:
+
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Price"
+        name: "price"
+        widget: "string"
+
+      - label: "Affiliate Link"
+        name: "affiliate_link"
+        widget: "string"
+
+      - label: "Category"
+        name: "category"
+        widget: "string"
+
+      - label: "Product Details"
+        name: "body"
+        widget: "markdown"
