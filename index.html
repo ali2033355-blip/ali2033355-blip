@@ -1,756 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Vireonis | Smart Consumer Electronics</title>
-
-  <meta name="description" content="Vireonis helps you discover better consumer electronics through reviews, buying guides, and product comparisons.">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fa;
-      color: #1f2937;
-      line-height: 1.6;
-    }
-
-    /* HEADER */
-
-    header {
-      background: #111827;
-      color: white;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-    }
-
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: #60a5fa;
-    }
-
-    /* HERO */
-
-    .hero {
-      background: linear-gradient(135deg, #eff6ff, #ffffff);
-      padding: 100px 20px;
-      text-align: center;
-    }
-
-    .hero-content {
-      max-width: 850px;
-      margin: auto;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 8px 15px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: 52px;
-      line-height: 1.15;
-      color: #111827;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: auto;
-      color: #6b7280;
-      font-size: 18px;
-    }
-
-    .hero-buttons {
-      margin-top: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 13px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 5px;
-    }
-
-    .button:hover {
-      background: #1d4ed8;
-    }
-
-    .button-secondary {
-      display: inline-block;
-      background: white;
-      color: #2563eb;
-      border: 1px solid #2563eb;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 5px;
-    }
-
-    /* GENERAL SECTION */
-
-    section {
-      padding: 75px 7%;
-    }
-
-    .section-heading {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 45px;
-    }
-
-    .section-heading h2 {
-      font-size: 34px;
-      color: #111827;
-      margin-bottom: 10px;
-    }
-
-    .section-heading p {
-      color: #6b7280;
-      font-size: 16px;
-    }
-
-    /* CARDS */
-
-    .cards {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .card-icon {
-      font-size: 32px;
-      margin-bottom: 18px;
-    }
-
-    .card h3 {
-      font-size: 21px;
-      color: #111827;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: #6b7280;
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-
-    .card a {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    /* GUIDES */
-
-    .guides {
-      background: white;
-    }
-
-    /* COMPARISONS */
-
-    .comparison-card {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .comparison-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 18px 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .comparison-row:last-child {
-      border-bottom: none;
-    }
-
-    .product {
-      width: 50%;
-      text-align: center;
-    }
-
-    .product h3 {
-      color: #111827;
-      margin-bottom: 5px;
-    }
-
-    .product p {
-      color: #6b7280;
-      font-size: 14px;
-    }
-
-    /* ABOUT */
-
-    .about {
-      background: #111827;
-      color: white;
-      text-align: center;
-    }
-
-    .about .section-heading h2 {
-      color: white;
-    }
-
-    .about .section-heading p {
-      color: #d1d5db;
-    }
-
-    .about-text {
-      max-width: 760px;
-      margin: auto;
-      color: #d1d5db;
-      font-size: 16px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #0b1120;
-      color: #9ca3af;
-      text-align: center;
-      padding: 35px 20px;
-      font-size: 13px;
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 800px) {
-
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      nav {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a {
-        font-size: 14px;
-      }
-
-      .hero {
-        padding: 75px 20px;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 55px 5%;
-      }
-
-      .section-heading h2 {
-        font-size: 28px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .comparison-row {
-        flex-direction: column;
-      }
-
-      .product {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      .logo {
-        font-size: 25px;
-      }
-
-      .hero h1 {
-        font-size: 31px;
-      }
-
-      .button,
-      .button-secondary {
-        display: block;
-        margin: 10px auto;
-        max-width: 240px;
-      }
-    }
-  </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vireonis | Consumer Technology</title>
+
+<meta
+name="description"
+content="Vireonis covers consumer electronics, technology reviews, buying guides, comparisons and product recommendations."
+>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f7f8fa;
+color:#111827;
+}
+
+header{
+background:#111827;
+color:white;
+padding:20px;
+}
+
+.nav{
+max-width:1100px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:white;
+text-decoration:none;
+}
+
+nav{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:15px;
+}
+
+.hero{
+background:#111827;
+color:white;
+padding:80px 20px;
+}
+
+.hero-inner{
+max-width:1100px;
+margin:auto;
+}
+
+.hero h1{
+font-size:48px;
+margin:0 0 20px;
+}
+
+.hero p{
+font-size:19px;
+line-height:1.7;
+max-width:700px;
+color:#d1d5db;
+}
+
+.hero-button{
+display:inline-block;
+margin-top:20px;
+padding:13px 20px;
+background:white;
+color:#111827;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+}
+
+section{
+max-width:1100px;
+margin:70px auto;
+padding:0 20px;
+}
+
+.section-heading{
+margin-bottom:30px;
+}
+
+.section-heading h2{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.section-heading p{
+color:#6b7280;
+line-height:1.7;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.card{
+background:white;
+padding:22px;
+border-radius:14px;
+box-shadow:0 5px 25px rgba(0,0,0,.06);
+}
+
+.card h3{
+font-size:21px;
+margin:10px 0;
+}
+
+.card p{
+color:#6b7280;
+line-height:1.7;
+}
+
+.card a{
+color:#111827;
+font-weight:bold;
+text-decoration:none;
+}
+
+.card-icon{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.about{
+background:white;
+padding:50px 20px;
+}
+
+.about-inner{
+max-width:900px;
+margin:auto;
+}
+
+.about h2{
+font-size:32px;
+}
+
+.about p{
+color:#6b7280;
+line-height:1.8;
+}
+
+footer{
+background:#111827;
+color:#9ca3af;
+text-align:center;
+padding:35px 20px;
+margin-top:70px;
+}
+
+@media(max-width:800px){
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.nav{
+align-items:flex-start;
+flex-direction:column;
+}
+
+nav{
+gap:14px;
+}
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-  <!-- HEADER -->
 
-  <header>
-    <div class="logo">Vireonis</div>
+<header>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#guides">Guides</a>
-      <a href="#comparisons">Comparisons</a>
-      <a href="#about">About</a>
-    </nav>
-  </header>
+<div class="nav">
 
+<a class="logo" href="/">Vireonis</a>
 
-  <!-- HERO -->
+<nav>
 
-  <section class="hero" id="home">
+<a href="/">Home</a>
 
-    <div class="hero-content">
+<a href="#reviews">Reviews</a>
 
-      <span class="badge">SMARTER TECH. BETTER DECISIONS.</span>
+<a href="#guides">Guides</a>
 
-      <h1>Find Better Tech Before You Buy</h1>
+<a href="#comparisons">Comparisons</a>
 
-      <p>
-        Vireonis helps you discover useful consumer electronics,
-        understand important features, compare products,
-        and make smarter buying decisions.
-      </p>
+<a href="#about">About</a>
 
-      <div class="hero-buttons">
-        <a href="#reviews" class="button">Explore Reviews</a>
-        <a href="#guides" class="button-secondary">Buying Guides</a>
-      </div>
+</nav>
 
-    </div>
+</div>
 
-  </section>
+</header>
 
 
-  <!-- REVIEWS -->
+<section class="hero">
 
-  <section id="reviews">
+<div class="hero-inner">
 
-    <div class="section-heading">
+<h1>Technology Made Simple.</h1>
 
-      <h2>Featured Reviews</h2>
+<p>
+Vireonis helps you understand consumer technology through
+reviews, buying guides, product comparisons and practical
+technology articles.
+</p>
 
-      <p>
-        Explore popular consumer electronics and learn
-        what really matters before buying.
-      </p>
+<a class="hero-button" href="#latest-articles">
+Explore Latest Articles
+</a>
 
-    </div>
+</div>
 
-    <div class="cards">
+</section>
 
-      <div class="card">
 
-        <div class="card-icon">🎧</div>
+<!-- REVIEWS -->
 
-        <h3>Wireless Earbuds</h3>
+<section id="reviews">
 
-        <p>
-          Learn about sound quality, battery life,
-          comfort, noise cancellation and other
-          important features.
-        </p>
+<div class="section-heading">
 
-        <a href="#">Read Review →</a>
+<h2>Featured Reviews</h2>
 
-      </div>
+<p>
+Explore Vireonis reviews of consumer electronics and technology products.
+</p>
 
+</div>
 
-      <div class="card">
+<div class="cards">
 
-        <div class="card-icon">🔋</div>
+<div class="card">
 
-        <h3>Power Banks</h3>
+<div class="card-icon">⭐</div>
 
-        <p>
-          Understand capacity, charging speed,
-          portability and compatibility before
-          choosing your next power bank.
-        </p>
+<h3>No Reviews Yet</h3>
 
-        <a href="#">Read Review →</a>
+<p>
+New Vireonis reviews will appear here automatically.
+</p>
 
-      </div>
+</div>
 
+</div>
 
-      <div class="card">
+</section>
 
-        <div class="card-icon">⌚</div>
+<!-- END REVIEWS -->
 
-        <h3>Smart Watches</h3>
 
-        <p>
-          Explore displays, battery life, fitness
-          features, notifications and smartphone
-          compatibility.
-        </p>
+<!-- GUIDES -->
 
-        <a href="#">Read Review →</a>
+<section class="guides" id="guides">
 
-      </div>
+<div class="section-heading">
 
-    </div>
+<h2>Buying Guides</h2>
 
-  </section>
+<p>
+Helpful guides to make smarter technology buying decisions.
+</p>
 
+</div>
 
-  <!-- GUIDES -->
+<div class="cards">
 
-  <section class="guides" id="guides">
+<div class="card">
 
-    <div class="section-heading">
+<div class="card-icon">📘</div>
 
-      <h2>Buying Guides</h2>
+<h3>No Guides Yet</h3>
 
-      <p>
-        Simple and useful guides to help you
-        understand technology before spending money.
-      </p>
+<p>
+New Vireonis buying guides will appear here automatically.
+</p>
 
-    </div>
+</div>
 
-    <div class="cards">
+</div>
 
-      <div class="card">
+</section>
 
-        <div class="card-icon">💰</div>
+<!-- END GUIDES -->
 
-        <h3>Best Tech Under $50</h3>
 
-        <p>
-          Discover useful consumer electronics
-          for shoppers looking for affordable options.
-        </p>
+<!-- LATEST ARTICLES -->
 
-        <a href="#">Read Guide →</a>
+<section id="latest-articles">
 
-      </div>
+<div class="section-heading">
 
+<h2>Latest Articles</h2>
 
-      <div class="card">
+<p>
+Explore the latest reviews, buying guides,
+comparisons and technology news from Vireonis.
+</p>
 
-        <div class="card-icon">🛒</div>
+</div>
 
-        <h3>How to Choose Tech</h3>
+<div class="cards">
 
-        <p>
-          Learn how to understand specifications,
-          features and product differences.
-        </p>
+<div class="card">
 
-        <a href="#">Read Guide →</a>
+<div class="card-icon">📰</div>
 
-      </div>
+<h3>No Articles Yet</h3>
 
+<p>
+New Vireonis articles will appear here automatically.
+</p>
 
-      <div class="card">
+</div>
 
-        <div class="card-icon">💡</div>
+</div>
 
-        <h3>Smart Buying Tips</h3>
+</section>
 
-        <p>
-          Practical tips for comparing products,
-          understanding features and avoiding
-          unnecessary purchases.
-        </p>
+<!-- END LATEST ARTICLES -->
 
-        <a href="#">Read Guide →</a>
 
-      </div>
+<!-- COMPARISONS -->
 
-    </div>
+<section id="comparisons">
 
-  </section>
+<div class="section-heading">
 
-  <!-- LATEST ARTICLES -->
+<h2>Product Comparisons</h2>
 
-  <section id="latest-articles">
+<p>
+Compare technology products and understand the differences before buying.
+</p>
 
-    <div class="section-heading">
+</div>
 
-      <h2>Latest Articles</h2>
+<div class="cards">
 
-      <p>
-        Explore the latest reviews, buying guides, comparisons and technology news from Vireonis.
-      </p>
+<div class="card">
 
-    </div>
+<div class="card-icon">⚖️</div>
 
-    <div class="cards" id="articles-container">
+<h3>No Comparisons Yet</h3>
 
-      <div class="card">
-        <div class="card-icon">📰</div>
-        <h3>Loading articles...</h3>
-        <p>Please wait while the latest Vireonis articles are loaded.</p>
-      </div>
+<p>
+New Vireonis comparisons will appear here automatically.
+</p>
 
-    </div>
+</div>
 
-  </section>
+</div>
 
-  <!-- END LATEST ARTICLES -->
+</section>
 
-  <script>
-    fetch('/data/articles.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Articles could not be loaded');
-        }
-        return response.json();
-      })
-      .then(articles => {
+<!-- END COMPARISONS -->
 
-        const container = document.getElementById('articles-container');
 
-        if (!articles.length) {
-          container.innerHTML = `
-            <div class="card">
-              <div class="card-icon">📰</div>
-              <h3>No Articles Yet</h3>
-              <p>New Vireonis articles will appear here automatically.</p>
-            </div>
-          `;
-          return;
-        }
+<section id="about" class="about">
 
-        container.innerHTML = articles
-          .slice(0, 6)
-          .map(article => {
+<div class="about-inner">
 
-            const image = article.image
-              ? `<img src="${article.image}" alt="${article.title}" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:18px;">`
-              : '';
+<h2>About Vireonis</h2>
 
-            return `
-              <div class="card">
-                ${image}
+<p>
+Vireonis is a consumer technology website focused on helping
+people understand products before they buy. We publish
+technology reviews, buying guides, comparisons and useful
+articles covering consumer electronics.
+</p>
 
-                <h3>${article.title}</h3>
+</div>
 
-                <p>${article.description || ''}</p>
+</section>
 
-                <a href="${article.url}">Read Article →</a>
-              </div>
-            `;
 
-          })
-          .join('');
+<footer>
 
-      })
-      .catch(error => {
+© 2026 Vireonis. All rights reserved.
 
-        document.getElementById('articles-container').innerHTML = `
-          <div class="card">
-            <div class="card-icon">⚠️</div>
-            <h3>Articles unavailable</h3>
-            <p>Please try again later.</p>
-          </div>
-        `;
+</footer>
 
-      });
-  </script>
-
-  <!-- COMPARISONS -->
-
-  <section id="comparisons">
-
-    <div class="section-heading">
-
-      <h2>Product Comparisons</h2>
-
-      <p>
-        Compare important features side by side
-        before making a purchase.
-      </p>
-
-    </div>
-
-    <div class="comparison-card">
-
-      <div class="comparison-row">
-
-        <div class="product">
-
-          <h3>Product A</h3>
-
-          <p>Features, performance and price</p>
-
-        </div>
-
-        <div class="product">
-
-          <h3>Product B</h3>
-
-          <p>Features, performance and price</p>
-
-        </div>
-
-      </div>
-
-
-      <div class="comparison-row">
-
-        <div class="product">
-
-          <h3>Wireless Earbuds</h3>
-
-          <p>Sound • Battery • Comfort</p>
-
-        </div>
-
-        <div class="product">
-
-          <h3>Smart Earbuds</h3>
-
-          <p>Features • ANC • Connectivity</p>
-
-        </div>
-
-      </div>
-
-
-      <div class="comparison-row">
-
-        <div class="product">
-
-          <h3>Smart Watch A</h3>
-
-          <p>Display • Fitness • Battery</p>
-
-        </div>
-
-        <div class="product">
-
-          <h3>Smart Watch B</h3>
-
-          <p>Health • Apps • Battery</p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ABOUT -->
-
-  <section class="about" id="about">
-
-    <div class="section-heading">
-
-      <h2>About Vireonis</h2>
-
-      <p>
-        Technology made easier to understand.
-      </p>
-
-    </div>
-
-    <p class="about-text">
-
-      Vireonis is a consumer technology website focused
-      on helping people make more informed buying decisions.
-      We cover everyday electronics through reviews,
-      buying guides and product comparisons.
-
-    </p>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <p>
-      © 2026 <strong>Vireonis</strong>. All rights reserved.
-    </p>
-
-    <p>
-      Affiliate Disclosure: Some links on Vireonis may be
-      affiliate links. If you purchase through these links,
-      we may earn a commission at no additional cost to you.
-    </p>
-
-  </footer>
 
 </body>
+
 </html>
