@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: vireonis/vireonis.github.io
+  name: turbo-github
+  turbo_site_id: 43b0ec99-74f0-4e34-97e5-b250fd4f9c49
   branch: main
 
 media_folder: "images/uploads"
