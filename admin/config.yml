@@ -11,6 +11,10 @@ display_url: https://vireonis.github.io
 
 collections:
 
+  # =========================
+  # ARTICLES
+  # =========================
+
   - name: "articles"
     label: "Articles"
     label_singular: "Article"
@@ -52,6 +56,94 @@ collections:
         widget: "markdown"
 
 
+  # =========================
+  # REVIEWS
+  # =========================
+
+  - name: "reviews"
+    label: "Reviews"
+    label_singular: "Review"
+    folder: "content/reviews"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+
+    fields:
+
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Product"
+        name: "product"
+        widget: "string"
+
+      - label: "Category"
+        name: "category"
+        widget: "string"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Review"
+        name: "body"
+        widget: "markdown"
+
+
+  # =========================
+  # BUYING GUIDES
+  # =========================
+
+  - name: "guides"
+    label: "Buying Guides"
+    label_singular: "Buying Guide"
+    folder: "content/guides"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+
+    fields:
+
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Category"
+        name: "category"
+        widget: "string"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Guide"
+        name: "body"
+        widget: "markdown"
+
+
+  # =========================
+  # PRODUCTS
+  # =========================
+
   - name: "products"
     label: "Products"
     label_singular: "Product"
@@ -88,5 +180,49 @@ collections:
         widget: "string"
 
       - label: "Product Details"
+        name: "body"
+        widget: "markdown"
+
+
+  # =========================
+  # COMPARISONS
+  # =========================
+
+  - name: "comparisons"
+    label: "Comparisons"
+    label_singular: "Comparison"
+    folder: "content/comparisons"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+
+    fields:
+
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Product A"
+        name: "product_a"
+        widget: "string"
+
+      - label: "Product B"
+        name: "product_b"
+        widget: "string"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Comparison"
         name: "body"
         widget: "markdown"
