@@ -538,6 +538,92 @@
 
   </section>
 
+  <!-- LATEST ARTICLES -->
+
+  <section id="latest-articles">
+
+    <div class="section-heading">
+
+      <h2>Latest Articles</h2>
+
+      <p>
+        Explore the latest reviews, buying guides, comparisons and technology news from Vireonis.
+      </p>
+
+    </div>
+
+    <div class="cards" id="articles-container">
+
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3>Loading articles...</h3>
+        <p>Please wait while the latest Vireonis articles are loaded.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script>
+    fetch('/data/articles.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Articles could not be loaded');
+        }
+        return response.json();
+      })
+      .then(articles => {
+
+        const container = document.getElementById('articles-container');
+
+        if (!articles.length) {
+          container.innerHTML = `
+            <div class="card">
+              <div class="card-icon">📰</div>
+              <h3>No Articles Yet</h3>
+              <p>New Vireonis articles will appear here automatically.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = articles
+          .slice(0, 6)
+          .map(article => {
+
+            const image = article.image
+              ? `<img src="${article.image}" alt="${article.title}" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:18px;">`
+              : '';
+
+            return `
+              <div class="card">
+                ${image}
+
+                <h3>${article.title}</h3>
+
+                <p>${article.description || ''}</p>
+
+                <a href="${article.url}">Read Article →</a>
+              </div>
+            `;
+
+          })
+          .join('');
+
+      })
+      .catch(error => {
+
+        document.getElementById('articles-container').innerHTML = `
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>Articles unavailable</h3>
+            <p>Please try again later.</p>
+          </div>
+        `;
+
+      });
+  </script>
 
   <!-- COMPARISONS -->
 
