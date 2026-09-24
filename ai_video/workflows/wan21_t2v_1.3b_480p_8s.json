@@ -1,0 +1,10 @@
+{
+  "name": "Wan 2.1 T2V 1.3B 480p 8s",
+  "model": "Wan 2.1 T2V 1.3B",
+  "resolution": [832, 480],
+  "fps": 16,
+  "frames": 129,
+  "steps": 20,
+  "cfg": 6,
+  "notes": "ComfyUI API workflow used by app.py. 129 frames at 16 fps is about 8.06 seconds."
+}
