@@ -47,7 +47,17 @@ def on_generate(_):
         data = requests.get(f"{COMFY_URL}/view", params=params, timeout=120).content
         final_path = OUTPUT / video["filename"]
         final_path.parent.mkdir(parents=True, exist_ok=True)
-        final_path.write_bytes(data)
+        raw_path = OUTPUT / ("raw_" + video["filename"])
+        raw_path.parent.mkdir(parents=True, exist_ok=True)
+        raw_path.write_bytes(data)
+        final_path = OUTPUT / video["filename"]
+        import subprocess
+        subprocess.run([
+            "ffmpeg", "-y", "-i", str(raw_path), "-t", "8.0",
+            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+            str(final_path)
+        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        raw_path.unlink(missing_ok=True)
         print("Done:", final_path)
 
 generate_btn.on_click(on_generate)
