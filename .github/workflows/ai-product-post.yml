@@ -1,0 +1,45 @@
+name: Gemini Product Publisher
+
+on:
+  workflow_dispatch:
+    inputs:
+      product_url:
+        description: "AliExpress product or affiliate link"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Gemini
+        uses: google-github-actions/run-gemini-cli@v0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          prompt: |
+            Create and publish a Vireonis product post.
+
+            The user's AliExpress link is:
+
+            ${{ inputs.product_url }}
+
+            Follow the instructions in GEMINI.md.
+
+            Use the available tools to inspect the repository and make
+            the required product Markdown file.
+
+            Save the final product post inside:
+            content/products/
+
+            Commit the completed file to the current branch.
+
+            Do not modify unrelated files.
